@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+    <body style="background-color: white">
+    <style>
+        .x-admin-sm body {font-size: 14px;height: 38px;}
+        div.layui-input-block {width: 92%;margin-left: 20px;}
+        .x-admin-sm .layui-input, .x-admin-sm .layui-select, .x-admin-sm .layui-textarea {height: 38px;}
+        .x-admin-sm .layui-icon {font-size: 18px;}
+        .layui-textarea {min-height: 160px;}
+    </style>
+    <form class="layui-form" action="" style="padding-top: 20px">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <textarea placeholder="请输入内容" id="input-textarea" class="layui-textarea"></textarea>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">单行输入：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" lay-verify="title" id="input-title" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input" style="width: 78%;position: absolute;left: 90px;">
+            </div>
+        </div>
+    </form>
+    </body>
+    <script>
+        layui.use('form',function () {
+            var form=layui.form;
+            form.render();
+        })
+    </script>
+{% endblock %}

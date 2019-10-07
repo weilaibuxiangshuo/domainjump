@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+    <body style="background-color: white">
+    <style>
+        .x-admin-sm body {font-size: 14px;height: 38px;}
+        div.layui-input-block {width: 70%;}
+        .x-admin-sm .layui-input, .x-admin-sm .layui-select, .x-admin-sm .layui-textarea {height: 38px;}
+        .x-admin-sm .layui-icon {font-size: 18px;}
+    </style>
+    <form class="layui-form" action="" style="padding-top: 20px">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title1" lay-verify="title1" id="input-title1" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">地址：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title2" lay-verify="title2" id="input-title2" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">总数：</label>
+            <div class="layui-input-block">
+                <input type="text" name="title5" lay-verify="title5" id="input-title5" autocomplete="off" placeholder="请输入标题"
+                       class="layui-input">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">方式：</label>
+            <div class="layui-input-block" id="input-title3">
+                <input type="radio" name="mode" value="1" title="DNS跳" checked="">
+                <input type="radio" name="mode" value="2" title="DNS限跳">
+                <input type="radio" name="mode" value="5" title="DNS对称" >
+                <input type="radio" name="mode" value="3" title="独立跳" >
+            </div>
+        </div>
+    </form>
+    </body >
+    <script>
+        layui.use('form',function () {
+            var form=layui.form;
+            form.render();
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 3000000,
+  "data": [
+    {
+      "id": "10001",
+      "username": "杜甫",
+      "email": "xianxin@layui.com"
+    },
+    {
+      "id": "10002",
+      "username": "李白",
+      "email": "xianxin@layui.com"
+    },
+    {
+      "id": "10003",
+      "username": "王勃",
+      "email": "xianxin@layui.com"
+    }
+  ]
+}

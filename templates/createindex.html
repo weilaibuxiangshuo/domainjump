@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+    <body style="background-color: white">
+    <style>
+        .x-admin-sm body {font-size: 14px;height: 38px;}
+        div.layui-input-block {width: 92%;margin-left: 20px;}
+        .x-admin-sm .layui-input, .x-admin-sm .layui-select, .x-admin-sm .layui-textarea {height: 38px;}
+        .x-admin-sm .layui-icon {font-size: 18px;}
+        .layui-textarea {min-height: 160px;}
+    </style>
+    <form class="layui-form" action="" style="padding-top: 20px">
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <textarea placeholder="请输入域名，如多条请每行一条" id="input-textarea" class="layui-textarea"></textarea>
+            </div>
+        </div>
+    </form>
+    </body>
+    <script>
+        layui.use('form',function () {
+            var form=layui.form;
+            form.render();
+        })
+    </script>
+{% endblock %}
