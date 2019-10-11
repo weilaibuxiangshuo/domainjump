@@ -169,8 +169,8 @@ class IndexData(View):
                     user_one = User.objects.filter(username=data[1]).first()
                     if user_one is not None:
                         """判断是否超出条件"""
-                        temporary=int(user_one.number)-len(user_one.jump_target.all().filter(jumptarget=None))
-                        if temporary !=0:
+                        temporary=int(user_one.number)-len(user_one.jump_target.all())
+                        if temporary !=0 and temporary > 0:
                             if user_one.mode=="5":
                                 Jump.objects.create(name=url_temp, jumptarget=user_one.target,is_jump=True,relationship=user_one)
                             else:
@@ -189,7 +189,8 @@ class IndexData(View):
     def delete(self,request):
         del_data=QueryDict(request.body)
         res=del_data.get('data','')
-        Jump.objects.filter(id=res).filter(jumptarget=None).delete()
+        print(res,'ppp')
+        Jump.objects.filter(id=res).delete()
         mainmiddleware = FuncMiddleware()
         mainmiddleware.UserModel()
         mainmiddleware.JumpModel()
@@ -375,7 +376,7 @@ class JumpIndexData(View):
                     if user_one is not None:
                         """判断是否超出条件"""
                         temporary=int(user_one.number)-len(user_one.jump_target.all().filter(is_jump=True))
-                        if temporary !=0:
+                        if temporary !=0 and temporary > 0:
                             Jump.objects.create(name=url_temp,jumptarget=target_one,is_jump=True,relationship=user_one)
                             mainmiddleware = FuncMiddleware()
                             mainmiddleware.UserModel()

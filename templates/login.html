@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{% static 'css/xadmin.css' %}">
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'lib/layui/layui.js' %}" charset="utf-8"></script>
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" />
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
@@ -29,7 +30,7 @@
         </style>
         <form method="post" class="" action=''>
             {% csrf_token %}
-            <input name="username" placeholder="用户名"  type="text" lay-verify="required" style="background-color: white;">
+            <input name="username" placeholder="用户名"  type="text" lay-verify="required" style="background-color: white;color: black;">
             <hr class="hr15">
             <input value="登录" lay-submit lay-filter="login" style="width:100%;background-color: black;" type="submit">
             <hr class="hr20" >
