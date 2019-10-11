@@ -125,5 +125,46 @@ class ModeUrlB:
         return resdata
 
 class ModeUrlC:
-    pass
+    @staticmethod
+    def publicdomain(record_list,domain):
+        cacheuserdata=cache.get('userdata')
+        cachejumpdata=cache.get('jumpdata')
+        for mm in record_list:
+            userone=cacheuserdata.filter(username=mm).first()
+            if userone is not None:
+                if userone.mode=="1":
+                    return userone.target
+                elif userone.mode=="2":
+                    jumpone=cachejumpdata.filter(name=domain).first()
+                    if jumpone is not None:
+                        return userone.target
+        return "error"
 
+
+    @classmethod
+    def showdomain(cls,request):
+        domain_url = request.META.get('HTTP_REFERER',"unknown")
+        if domain_url=="unknown":
+            domain = request.META.get('HTTP_HOST', "unknown")
+            if domain=="unknown":
+                return "error"
+        else:
+            domain = str(domain_url)[7:][:-1]
+        list_url = domain.strip().split('.')
+        if list_url[0] != "www":
+            domain = "www." + domain
+        cachejumpdata = cache.get('jumpdata')
+        is_jump_url=cachejumpdata.filter(name=domain).first()
+        if is_jump_url is not None:
+            if is_jump_url.jumptarget != None and is_jump_url.is_jump==True:
+                return is_jump_url.jumptarget
+        try:
+            A = dns.resolver.query(domain, 'A')
+        except Exception as e:
+            return "error"
+        record_list=[]
+        for ii in A.response.answer:
+            record_list.append(str(ii[0])[0:-1])
+        resdata = ModeUrlB.publicdomain(record_list,domain)
+        # print(resdata)
+        return resdata
