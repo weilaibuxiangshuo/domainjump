@@ -10,7 +10,7 @@ layui.use(['table','form','layer'], function () {
                 , title: '用户数据表'
                 , cols: [[
                     {type: 'checkbox', fixed: 'left'}
-                    , {field: 'id', title: 'ID', width: 80, fixed: 'left', unresize: true, sort: true}
+                    , {field: 'defineid', title: '序号', width: 80, fixed: 'left', unresize: true, sort: true,type:'numbers'}
                     , {field: 'username', title: '用户名', }
                     , {field: 'target', title: '跳转地址',}
                     , {fixed: 'right', title: '操作', toolbar: '#barDemo', width: 150}
