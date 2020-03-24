@@ -41,14 +41,15 @@ class IsDomain(MiddlewareMixin):
             pass
         else:
             """方式A"""
-            resdata = ModeUrlA().showdomain(request)
+            #resdata = ModeUrlA().showdomain(request)
+            resdata = ModeUrlC().showdomain(request)
             """方式B"""
             # resdata = ModeUrlB().showdomain(request)
             if resdata=="error":
                 return HttpResponse(status=403)
             else:
-                print(resdata)
-                # return redirect(resdata)
+                #print(resdata)
+                return redirect(resdata)
 
 class ParentLogin(View):
     def get(self,request):
